@@ -8,6 +8,10 @@ LOGIN::LOGIN(QWidget *parent)
 {
 
     ui->setupUi(this);
+
+    // QVBoxLayout *layout = new QVBoxLayout(this);
+    // Meniu *meniu = new Meniu(this);
+    // layout->addWidget(meniu);
     //signUpWidget = new SignUp();
     //admin=new Admin();
 
@@ -16,7 +20,7 @@ LOGIN::LOGIN(QWidget *parent)
 LOGIN::~LOGIN()
 {
     //delete admin;
-    //delete signUpWidget;
+   // delete signUpWidget;
     delete ui;
 }
 
@@ -27,31 +31,13 @@ QString LOGIN::getUsername() const
     return username;
 }
 
-void LOGIN::on_LoginButton_clicked()
-{
-    this->username = ui->lineEdit->text();
-    emit loginClosed(); // Emite semnalul atunci când butonul este apăsat și obținerea username-ului este completă
-}
-
-
-void LOGIN::on_SignUpRedirect_clicked()
-{
-    // Închide fereastra de login
-    this->close();
-    // Deschide pagina de înregistrare folosind show()
-    SignUp *signUpWidget = new SignUp();
-    // signUpWidget->show();
-    signUpWidget->show();
-    signUpWidget->start();
-}
-
 void LOGIN::start()
 {
-    QObject::connect(&*this, &LOGIN::loginClosed, [&]() {
+
         QString username=this->getUsername();
         // qDebug() <<username;
         QTcpSocket socket;
-        socket.connectToHost("127.0.0.1", 54000); // Adresa IP și portul serverului
+        socket.connectToHost("127.0.0.1", 12345); // Adresa IP și portul serverului
 
         if (socket.waitForConnected()) {
             qDebug() << "Conectat cu succes la server!";
@@ -76,18 +62,40 @@ void LOGIN::start()
                 qDebug() << "Răspuns parțial de la server:" << response;
                 if(response != "Nu s-a gasit nicio potrivire."){
                     this->close();
-                    Admin *admin = new Admin();
-                //AdminWidget->addUsername(this->getUsername());
+                    // Admin *AdminWidget = new Admin();
+                    //AdminWidget->addUsername(this->getUsername());
+                    Admin *admin= new Admin();
                     admin->start(this->getUsername());
                     admin->show();}
 
-                //AdminWidget->start(this->getUsername());
 
             }
         } else {
             qDebug() << "Conectarea la server a eșuat!";
         }
 
-    });
+
 }
+
+
+
+void LOGIN::on_LoginButton_clicked()
+{
+    this->username = ui->lineEdit->text();
+    this->start();
+    //emit loginClosed(); // Emite semnalul atunci când butonul este apăsat și obținerea username-ului este completă
+}
+
+
+void LOGIN::on_SignUpRedirect_clicked()
+{
+    // Închide fereastra de login
+    this->close();
+    // Deschide pagina de înregistrare folosind show()
+    SignUp *signUpWidget = new SignUp();
+    //signUpWidget->show();
+    signUpWidget->show();
+}
+
+
 

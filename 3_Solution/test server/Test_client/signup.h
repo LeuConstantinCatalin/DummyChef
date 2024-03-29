@@ -6,8 +6,6 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-#include"admin.h"
-
 
 namespace Ui {
 class SignUp;
@@ -32,7 +30,7 @@ private:
     QString username;
 
 signals:
-    void signUpClosed();
+   // void signUpClosed();
 };
 
 #endif // SIGNUP_H

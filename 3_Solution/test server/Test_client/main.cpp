@@ -16,7 +16,7 @@
 
 #include <QApplication>
 #include"login.h"
-//#include"signup.h"
+
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     LOGIN l;
     //SignUp s;
     l.show();
-    l.start();
+    //l.start();
     // QObject::connect(&s, &SignUp::signUpClosed, [&]() {
     //     QString username=s.getUsername();
     //     // qDebug() <<username;

@@ -11,7 +11,8 @@
 #pragma comment (lib, "odbc32.lib")
 
 
-int main() {
+int main() 
+{
 
     //server
     // Inițializare Winsock
@@ -41,6 +42,8 @@ int main() {
         std::cerr << "Eroare la conectarea la baza de date!" << std::endl;
         return -1;
     }
+    else
+        std::cout << "conectat la baza de date";
 
     // Creare socket
     SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
@@ -53,14 +56,15 @@ int main() {
     // Bind socket
     sockaddr_in hint;
     hint.sin_family = AF_INET;
-    hint.sin_port = htons(54000);
+    hint.sin_port = htons(12345);
     hint.sin_addr.S_un.S_addr = INADDR_ANY;
     bind(listening, (sockaddr*)&hint, sizeof(hint));
-
     // Ascultă pentru conexiuni
     listen(listening, SOMAXCONN);
+    while (true)
+    {
+    
 
-    while (true) {
         // Așteaptă conexiuni
         sockaddr_in client;
         int clientSize = sizeof(client);
@@ -135,7 +139,7 @@ int main() {
                 send(clientSocket, "Datele au fost inserate cu succes.", 34, 0);
             }
             else {
-                send(clientSocket, "Eroare la inserarea datelor.", 29, 0);
+                send(clientSocket, "Eroare la inserarea datelor.", 28, 0);
             }
         }
        // send(clientSocket, "", 1, 0);

@@ -38,7 +38,7 @@ public:
         LoginButton->setGeometry(QRect(150, 200, 80, 24));
         label = new QLabel(LOGIN);
         label->setObjectName("label");
-        label->setGeometry(QRect(70, 100, 61, 16));
+        label->setGeometry(QRect(80, 100, 61, 16));
         lineEdit = new QLineEdit(LOGIN);
         lineEdit->setObjectName("lineEdit");
         lineEdit->setGeometry(QRect(200, 100, 113, 24));

@@ -1,8 +1,8 @@
 #ifndef ADMIN_H
 #define ADMIN_H
-#include"user.h"
-#include <QWidget>
 
+#include <QWidget>
+#include"user.h"
 namespace Ui {
 class Admin;
 }
@@ -15,10 +15,14 @@ public:
     explicit Admin(QWidget *parent = nullptr);
 
     void start(const QString u);
+
+    void onLogoutClicked();
     ~Admin();
 
 private slots:
 
+
+    //void on_pushButton_4_clicked();
 
 private:
     Ui::Admin *ui;

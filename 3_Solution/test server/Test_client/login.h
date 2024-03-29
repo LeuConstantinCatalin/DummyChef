@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "signup.h"
 #include "admin.h"
+#include "meniu.h"
 
 
 namespace Ui {
@@ -25,10 +26,12 @@ private:
     Ui::LOGIN *ui;
     //SignUp *signUpWidget;
     //Admin *admin;
+
+    //Meniu *meniu;
     QString username;
 
 signals:
-    void loginClosed();
+   // void loginClosed();
 
 private slots:
     void on_LoginButton_clicked();

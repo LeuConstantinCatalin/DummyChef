@@ -14,6 +14,8 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    meniu.cpp \
+    retete.cpp \
     signup.cpp \
     user.cpp \
     utilizator.cpp
@@ -23,6 +25,8 @@ HEADERS += \
     bucatar.h \
     login.h \
     mainwindow.h \
+    meniu.h \
+    retete.h \
     signup.h \
     user.h \
     utilizator.h
@@ -32,6 +36,7 @@ FORMS += \
     bucatar.ui \
     login.ui \
     mainwindow.ui \
+    retete.ui \
     signup.ui \
     utilizator.ui
 

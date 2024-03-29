@@ -26,6 +26,7 @@ public:
     QLabel *label;
     QLabel *label_2;
     QPushButton *SignUpButton;
+    QLineEdit *retraySignUp;
 
     void setupUi(QWidget *SignUp)
     {
@@ -47,6 +48,12 @@ public:
         SignUpButton = new QPushButton(SignUp);
         SignUpButton->setObjectName("SignUpButton");
         SignUpButton->setGeometry(QRect(140, 230, 80, 24));
+        retraySignUp = new QLineEdit(SignUp);
+        retraySignUp->setObjectName("retraySignUp");
+        retraySignUp->setGeometry(QRect(170, 10, 161, 41));
+        retraySignUp->setAutoFillBackground(true);
+        retraySignUp->setAlignment(Qt::AlignJustify|Qt::AlignVCenter);
+        retraySignUp->setReadOnly(true);
 
         retranslateUi(SignUp);
 

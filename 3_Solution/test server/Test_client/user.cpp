@@ -5,3 +5,4 @@ void User::addUsername(const QString u)
 {
     username=u;
 }
+

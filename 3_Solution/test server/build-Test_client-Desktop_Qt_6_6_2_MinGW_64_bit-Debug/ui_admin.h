@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
@@ -22,6 +23,7 @@ class Ui_Admin
 public:
     QLabel *label;
     QTextEdit *username;
+    QPushButton *pushButton_4;
 
     void setupUi(QWidget *Admin)
     {
@@ -35,6 +37,9 @@ public:
         username->setObjectName("username");
         username->setGeometry(QRect(160, 20, 104, 31));
         username->setReadOnly(true);
+        pushButton_4 = new QPushButton(Admin);
+        pushButton_4->setObjectName("pushButton_4");
+        pushButton_4->setGeometry(QRect(300, 20, 80, 24));
 
         retranslateUi(Admin);
 
@@ -45,6 +50,7 @@ public:
     {
         Admin->setWindowTitle(QCoreApplication::translate("Admin", "Form", nullptr));
         label->setText(QCoreApplication::translate("Admin", "Salut", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("Admin", "LogOut", nullptr));
     } // retranslateUi
 
 };

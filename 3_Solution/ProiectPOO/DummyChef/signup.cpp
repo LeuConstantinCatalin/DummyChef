@@ -54,7 +54,8 @@ void SignUp::otherButtonClicked()
 
 void SignUp::actionButtonClicked()
 {
-    ServerConector::createServerConector();
+    if(type=="utilizator")
+    {ServerConector::createServerConector();
     //ServerConector::connectToServer();
     QString username=usernameInput->text();
     QString password=passwordInput->text();
@@ -69,8 +70,17 @@ void SignUp::actionButtonClicked()
 
        // Utilizator* u =new Utilizator(username);
         //u->show();
-        UserFactory::createUser(type,username).show();
-        SignFactory::deleteSign();
+        //if(type=="utilizator")
+           {UserFactory::createUser(type,username).show();
+            SignFactory::deleteSign();}
+        // else
+        // {
+        //     ServerConector::deleteServerConector();
+        //     //SignUp::deleteSignUp();
+        //     SignFactory::deleteSign();
+        //     // Login::createLogin().show();
+        //     SignFactory::createSign("ASTEPTATI CA UN ADMIN SA VA APROBE CEREREA","LOGIN").show();
+        // }
 
     }
     else
@@ -82,6 +92,12 @@ void SignUp::actionButtonClicked()
         // Login::createLogin().show();
         SignFactory::createSign("USERNAMEUL DEJA EXISTA","SIGNUP").show();
     }
-
+    }
+    else
+        {
+            this->close();
+            SignFactory::deleteSign();
+            SignFactory::createSign("ASTEPTATI SA SE APROBE CEREREA","LOGIN").show();
+        }
 }
 

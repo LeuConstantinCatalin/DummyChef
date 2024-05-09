@@ -18,7 +18,8 @@ public:
     //~Utilizator();
     //explicit Bucatar(QWidget *parent = nullptr);
     ~Bucatar();
-
+protected slots:
+    void retete_clicked() override{};
 private:
     //Ui::Bucatar *ui;
 };

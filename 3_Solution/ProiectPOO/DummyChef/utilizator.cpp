@@ -33,9 +33,9 @@ Utilizator::~Utilizator()
 
 void Utilizator::retete_clicked()
 {
-    ServerConector::send_message("retete");
+    //ServerConector::send_message("retete");
 
-    ServerConector::receive_message();
+    //ServerConector::receive_message();
 
 
     //qDebug()<<"Salut";

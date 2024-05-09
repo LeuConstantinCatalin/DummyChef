@@ -4,14 +4,14 @@
 
  #include "sig.h"
 // #include <QDialog>
-#include <QComboBox>
+
 class Login : public Sig
  {
     Q_OBJECT
 
  private:
 
-    QComboBox *comboBox;
+   // QComboBox *comboBox;
 
     //static Login* instancel;
     //explicit Login(QWidget *parent = nullptr);
@@ -29,8 +29,8 @@ class Login : public Sig
 
     void actionButtonClicked()override;
     void otherButtonClicked()override;
-private slots:
-    void comboBoxActivated();
+// private slots:
+//     void comboBoxActivated();
 
  };
 

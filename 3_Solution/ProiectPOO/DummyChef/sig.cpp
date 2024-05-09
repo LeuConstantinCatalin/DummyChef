@@ -37,11 +37,26 @@ Sig::Sig(QString mess,QWidget *parent)
 
     connect(other, &QPushButton::clicked, this, &Sig::other_clicked);
     connect(action, &QPushButton::clicked, this, &Sig::action_clicked);
+
+
+    comboBox = new QComboBox(this);
+    comboBox->addItem("utilizator");
+    //comboBox->addItem("admin");
+    comboBox->addItem("bucatar");
+    comboBox->setGeometry(240, 150, 100, 30);
+    connect(comboBox, QOverload<int>::of(&QComboBox::activated), this, &Sig::comboBoxActivated);
 }
 // void Sig::on_other_clicked()
 // {
 //     otherButtonClicked();
 // }
+
+void Sig::comboBoxActivated()
+{
+    type=comboBox->currentText();
+    qDebug()<<type;
+    // Implementează acțiunea pentru selectarea unei opțiuni din combobox aici
+}
 
 void Sig::other_clicked()
 {

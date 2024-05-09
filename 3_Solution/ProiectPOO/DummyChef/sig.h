@@ -7,6 +7,7 @@
 #include <QLineEdit>
 #include <QMouseEvent>
 #include<QString>
+#include <QComboBox>
 
 #include "isign.h"
 namespace Ui {
@@ -38,10 +39,13 @@ protected:
     QLineEdit* passwordInput;
     QLineEdit* message;
 
+    QComboBox *comboBox;
+
 
 private slots:
     void other_clicked();
     void action_clicked();
+    void comboBoxActivated();
 
 };
 

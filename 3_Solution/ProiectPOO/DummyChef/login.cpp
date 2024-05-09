@@ -40,20 +40,20 @@ Login::Login(QString mess,QWidget *parent)
     action->setText("Login");
     other->setText("SignUp");
 
-    comboBox = new QComboBox(this);
-    comboBox->addItem("utilizator");
+    // comboBox = new QComboBox(this);
+    // comboBox->addItem("utilizator");
     comboBox->addItem("admin");
-    comboBox->addItem("bucatar");
-    comboBox->setGeometry(240, 150, 100, 30);
-    connect(comboBox, QOverload<int>::of(&QComboBox::activated), this, &Login::comboBoxActivated);
+    // comboBox->addItem("bucatar");
+    // comboBox->setGeometry(240, 150, 100, 30);
+    // connect(comboBox, QOverload<int>::of(&QComboBox::activated), this, &Login::comboBoxActivated);
 }
 
-void Login::comboBoxActivated()
-{
-    type=comboBox->currentText();
-    qDebug()<<type;
-    // Implementează acțiunea pentru selectarea unei opțiuni din combobox aici
-}
+// void Login::comboBoxActivated()
+// {
+//     type=comboBox->currentText();
+//     qDebug()<<type;
+//     // Implementează acțiunea pentru selectarea unei opțiuni din combobox aici
+// }
 
 void Login::otherButtonClicked()
 {

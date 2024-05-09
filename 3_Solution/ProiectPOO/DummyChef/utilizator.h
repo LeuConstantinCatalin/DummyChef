@@ -16,7 +16,7 @@ public:
     // static void deleteUtilizator();
     explicit Utilizator(QString userN,QWidget *parent = nullptr);
     ~Utilizator();
-private slots:
+protected slots:
     void retete_clicked() override;
     //void listaDeCumparaturi_clicked()override{};
     //void logOut_clicked() override{qDebug()<<"Sunt in utilizator\n";};

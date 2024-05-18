@@ -208,3 +208,34 @@ SET zile_pana_la_livrare = (
     INNER JOIN stocuri_furnizori sf ON flc.furnizor_id = sf.furnizor_id AND flc.ingredient_id = sf.ingredient_id
     WHERE flc.lista_de_cumparaturi_id = lista_de_cumparaturi.id
 )
+
+SELECT * FROM retete
+SELECT * FROM ingrediente
+
+SELECT R.nume, I.nume
+FROM (stocuri_ingrediente SI JOIN retete R 
+ON SI.reteta_id = R.id) 
+JOIN ingrediente I
+ON SI.ingredient_id = I.id
+
+
+SELECT reteta_id
+FROM stocuri_ingrediente
+GROUP BY reteta_id
+
+SELECT 
+    r.nume AS Nume_Reteta,
+    r.mod_de_preparare AS Mod_de_preparare,
+    li.cantitate AS Cantitate_Ingredient,
+    i.nume AS Nume_Ingredient,
+    f.nume AS Nume_Furnizor
+FROM 
+    retete r
+JOIN 
+    stocuri_ingrediente li ON r.id = li.reteta_id
+JOIN 
+    ingrediente i ON li.ingredient_id = i.id
+JOIN 
+    furnizori_lista_de_cumparaturi fl ON li.ingredient_id = fl.ingredient_id
+JOIN 
+    furnizori f ON fl.furnizor_id = f.id;

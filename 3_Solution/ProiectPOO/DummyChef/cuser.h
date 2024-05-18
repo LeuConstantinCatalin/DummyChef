@@ -1,10 +1,12 @@
 #ifndef CUSER_H
 #define CUSER_H
 #include"iuser.h"
+#include "reteta.h"
 #include <QWidget>
 #include<QLabel>
 #include<QLineEdit>
 #include<QPushButton>
+#include <QVBoxLayout>
 
 namespace Ui {
 class CUser;
@@ -23,9 +25,10 @@ private:
     Ui::CUser *ui;
 
 private slots:
-    virtual void retete_clicked(){};
+    virtual void retete_clicked();
     virtual void listaDeCumparaturi_clicked(){};
     virtual void logOut_clicked();
+    virtual void onRetetaButtonClicked();
 
 protected:
 
@@ -35,6 +38,13 @@ protected:
     QPushButton* Retete;
     QPushButton* ListaDeCumparaturi;
     QPushButton* LogOut;
+    QList<QPushButton*> buttonsList;
+
+    QList<Reteta> listaRetete;
+
+    void populare_lista_retete(const QString& fileWithPaths);
 };
+
+
 
 #endif // CUSER_H

@@ -1,3 +1,5 @@
+
+
 QT       += core gui network
 QT += widgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -12,11 +14,13 @@ SOURCES += \
     admin.cpp \
     bucatar.cpp \
     cuser.cpp \
+    detaliiretetawindow.cpp \
     isign.cpp \
     iuser.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    reteta.cpp \
     serverconector.cpp \
     sig.cpp \
     signfactory.cpp \
@@ -28,10 +32,12 @@ HEADERS += \
     admin.h \
     bucatar.h \
     cuser.h \
+    detaliiretetawindow.h \
     isign.h \
     iuser.h \
     login.h \
     mainwindow.h \
+    reteta.h \
     serverconector.h \
     sig.h \
     signfactory.h \

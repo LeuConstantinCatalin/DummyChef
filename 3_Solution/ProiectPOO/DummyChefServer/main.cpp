@@ -10,8 +10,9 @@ int main() {
   
     ClientConector::createClientConector();
     ClientConector::initializareServer();
-
-
+    std::string result;
+    DbConector::executeQuery("SELECT * FROM retete", result);
+    std::cout << std::endl << result << std::endl;
     while (true)
     {
         

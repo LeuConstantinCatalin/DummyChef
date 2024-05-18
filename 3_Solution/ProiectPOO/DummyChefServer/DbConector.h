@@ -30,6 +30,6 @@ public:
 	static void initializareConexiuneBd();
 	static bool efectueazaCautareUserInDb(const std::string& cautare, const std::string& username, const std::string& parola, const std::string&userType, SOCKET& socket) ;
 	static bool insereazaUserInDb(const std::string& cautare, SOCKET& socket);
-
+	static bool executeQuery(const std::string& query, std::string& result);
 };
 

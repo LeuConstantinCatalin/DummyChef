@@ -22,9 +22,11 @@ public:
     ~Admin();
 
 private slots:
-    void modificareUseri_clicked(){qDebug()<<"Useri Modificati";};
+    void AddBucatari_clicked();//{qDebug()<<"Useri Modificati";};
+     void EditUsers_clicked();
 private:
-    QPushButton* ModificareUseri;
+    QPushButton* AddBucatari;
+    QPushButton* EditUsers;
     //Ui::Bucatar *ui;
 //protected slots:
 //    void retete_clicked() override{};

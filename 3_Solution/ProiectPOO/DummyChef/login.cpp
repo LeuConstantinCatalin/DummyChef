@@ -7,33 +7,7 @@
 #include "serverconector.h"
 #include "userfactory.h"
 #include <QDebug>
-// Login* Login::instancel=nullptr;
 
-// Login& Login::createLogin()
-// {
-//     if(instancel==nullptr)
-//     {
-//         instancel=new Login();
-//         qDebug()<<"Am creat un Login\n";
-//     }
-//     else
-//         qDebug()<<"Exista deja un Login";
-//     return *instancel;
-// }
-
-// void Login::deleteLogin()
-// {
-//     if(instancel!=nullptr)
-//     {
-//         //ServerConector::deleteServerConector();
-//         delete instancel;
-//         instancel=nullptr;
-
-//         qDebug()<<"Am distrus un Login\n";
-//     }else
-//         qDebug()<<"Nu exista un Login de distrus\n";
-
-// }
 Login::Login(QString mess,QWidget *parent)
     : Sig(mess,parent)
 {

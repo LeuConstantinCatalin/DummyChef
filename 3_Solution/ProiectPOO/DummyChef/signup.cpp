@@ -54,9 +54,8 @@ void SignUp::otherButtonClicked()
 
 void SignUp::actionButtonClicked()
 {
-    if(type=="utilizator")
+    if(usernameInput->text().length()>0&&passwordInput->text().length()>0)
     {ServerConector::createServerConector();
-    //ServerConector::connectToServer();
     QString username=usernameInput->text();
     QString password=passwordInput->text();
     QString cerere = "SignUp|" + username+"|"+password+"|"+type;
@@ -66,21 +65,27 @@ void SignUp::actionButtonClicked()
     if(raspuns=="Inserat")
     {
         this->close();
-        //SignUp::deleteSignUp();
 
-       // Utilizator* u =new Utilizator(username);
-        //u->show();
-        //if(type=="utilizator")
            {UserFactory::createUser(type,username).show();
             SignFactory::deleteSign();}
-        // else
-        // {
-        //     ServerConector::deleteServerConector();
-        //     //SignUp::deleteSignUp();
-        //     SignFactory::deleteSign();
-        //     // Login::createLogin().show();
-        //     SignFactory::createSign("ASTEPTATI CA UN ADMIN SA VA APROBE CEREREA","LOGIN").show();
-        // }
+    }
+    else
+        if(raspuns=="Bucatar")
+        {
+        this->close();
+        ServerConector::deleteServerConector();
+        SignFactory::deleteSign();
+        SignFactory::createSign("ASTEPTATI SA SE APROBE CEREREA","LOGIN").show();
+        }
+        else
+        {
+            this->close();
+            ServerConector::deleteServerConector();
+            //SignUp::deleteSignUp();
+            SignFactory::deleteSign();
+            // Login::createLogin().show();
+            SignFactory::createSign("USERNAMEUL DEJA EXISTA","SIGNUP").show();
+        }
 
     }
     else
@@ -90,14 +95,7 @@ void SignUp::actionButtonClicked()
         //SignUp::deleteSignUp();
         SignFactory::deleteSign();
         // Login::createLogin().show();
-        SignFactory::createSign("USERNAMEUL DEJA EXISTA","SIGNUP").show();
+        SignFactory::createSign("NU PUTETI LASA SPATII GOALE","SIGNUP").show();
     }
-    }
-    else
-        {
-            this->close();
-            SignFactory::deleteSign();
-            SignFactory::createSign("ASTEPTATI SA SE APROBE CEREREA","LOGIN").show();
-        }
 }
 

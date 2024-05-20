@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h" />
+    <ClInclude Include="Bucatar.h" />
     <ClInclude Include="ClientConector.h" />
     <ClInclude Include="CUser.h" />
     <ClInclude Include="DbConector.h" />
@@ -134,6 +136,8 @@
     <ClInclude Include="Utilizator.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Bucatar.cpp" />
     <ClCompile Include="ClientConector.cpp" />
     <ClCompile Include="CUser.cpp" />
     <ClCompile Include="DbConector.cpp" />

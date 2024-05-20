@@ -8,8 +8,9 @@ class UserFactory
 private:
     static IUser*instance;
 public:
-    UserFactory();
+    //UserFactory();
     static IUser& createUser(QString type,QString username);
+    //static IUser& createUser(QString type);
     static void deleteUser();
 
 };

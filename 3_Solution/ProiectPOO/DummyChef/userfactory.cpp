@@ -1,6 +1,6 @@
 #include "userfactory.h"
 #include"admin.h"
-UserFactory::UserFactory() {}
+//UserFactory::UserFactory() {}
 
 
 
@@ -30,6 +30,7 @@ IUser& UserFactory::createUser(QString type, QString username)
 
     return* instance;
 }
+
 
 void UserFactory::deleteUser()
 {

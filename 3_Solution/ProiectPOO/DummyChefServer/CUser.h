@@ -4,18 +4,28 @@ class CUser: public IUser
 {
 protected:
 	SOCKET socket;
-	bool t;
+	std::thread myth;
+	bool b;
 public:
 	CUser(SOCKET socket);
+	const SOCKET getSocket() const {
+		return socket;
+	}
 	virtual void play();
 	void startThread() override {
-		std::thread myth = std::move(std::thread(&CUser::play, this));
-		if (t == true)
-			myth.detach();
-		//play();
-		else
-			myth.join();
+
+		myth = std::move(std::thread(&CUser::play, this));
+		myth.detach();
 	}
-	~CUser() {};
+	~CUser() { socket = INVALID_SOCKET;
+	b = false;         
+	// Verifică dacă thread-ul este încă în desfășurare
+
+	if (myth.joinable()) {
+		// Așteaptă ca thread-ul să se termine
+		myth.join();
+	}
+	};
+
 };
 

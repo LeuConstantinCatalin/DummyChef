@@ -17,6 +17,8 @@ Sig::Sig(QString mess,QWidget *parent)
     passwordInput = new QLineEdit("",this);
     message = new QLineEdit(mess,this);
 
+    passwordInput->setEchoMode(QLineEdit::Password);
+
     // Setarea dimensiunilor și a poziției butonului
     action->setGeometry(150, 250, 100, 30);
     other->setGeometry(290,10,100,30);

@@ -5,28 +5,35 @@
 CUser::CUser(SOCKET sock)
 {
 	socket = sock;
-	t = true;
+	b = true;
 	//startThread();
 	
 }
 
 void CUser::play()
 {
-	{ std::cout << 1 << "\n\n";
+	std::cout << "CUSER\n";
 
-	while (t == true)
+
+	while (b == true)
 	{
 		if (ClientConector::isSocketConnected(socket) == true) {
-			ClientConector::receive_message(socket);
-			ClientConector::send_message(socket, "da");
-			std::cout << "Maine" << "\n\n";
+			
+
+			std::string s = ClientConector::receive_message(socket);
+			
 		}
 		else
 		{
-			t = false;
+			b = false;
+			std::cout << "Am terminat cu cuserul\n";
 		}
 
+
+		
+
 	}
-	}
+	//myth.join();
+	
 }
 

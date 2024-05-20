@@ -9,9 +9,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addbucatari2.cpp \
     admin.cpp \
     bucatar.cpp \
+    ceditview.cpp \
     cuser.cpp \
+    editusers.cpp \
+    editview.cpp \
+    editviewfactory.cpp \
     isign.cpp \
     iuser.cpp \
     login.cpp \
@@ -25,9 +30,14 @@ SOURCES += \
     utilizator.cpp
 
 HEADERS += \
+    addbucatari2.h \
     admin.h \
     bucatar.h \
+    ceditview.h \
     cuser.h \
+    editusers.h \
+    editview.h \
+    editviewfactory.h \
     isign.h \
     iuser.h \
     login.h \
@@ -40,8 +50,11 @@ HEADERS += \
     utilizator.h
 
 FORMS += \
+    addbucatari2.ui \
     bucatar.ui \
+    ceditview.ui \
     cuser.ui \
+    editusers.ui \
     mainwindow.ui \
     sig.ui \
     signup.ui \

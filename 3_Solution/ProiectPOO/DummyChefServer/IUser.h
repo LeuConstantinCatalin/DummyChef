@@ -8,5 +8,7 @@ class IUser
 {
 public:
 	virtual void startThread() = 0;
+	virtual const SOCKET getSocket() const=0;
+	virtual ~IUser() {};
 };
 

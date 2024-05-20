@@ -73,7 +73,7 @@ CREATE TABLE stocuri_furnizori (
     id INT PRIMARY KEY IDENTITY, -- Cheie primară auto-incrementată
     furnizor_id INT, -- Cheie străină către tabelul furnizori
     ingredient_id INT, -- Cheie străină către tabelul ingrediente
-    cantitate DECIMAL(10,2), -- Cantitatea de ingredient în stoc
+    --cantitate DECIMAL(10,2), -- Cantitatea de ingredient în stoc
     calitate VARCHAR(50), -- Calitatea ingredientului
     pret DECIMAL(10,2), -- Prețul ingredientului
     zile_pana_la_livrare INT, -- Numărul de zile până la livrare

@@ -34,5 +34,14 @@ public:
 	static bool executaProceduraStocata(const SOCKET& socket, const std::string& proceduraStocata) ;
 	static bool cautaExistentaInTabel(const SOCKET& socket, const std::string& proceduraStocata);
 
+	static bool RequestToateIngredientele(const std::string& query, std::string& result);
+	static bool RequestReteta(const std::string& query, std::string& result);
+	static bool RequestIngrediente(const std::string& query, std::string& result);
+	static bool RequestToateRetetele(std::string& result);
+	static bool RequestCumparaturi(const std::string& query, std::string& result, int cantitate, double& pret);
+
+	static bool RequestActivity(const std::string& query, std::string& result);
+
+
 };
 

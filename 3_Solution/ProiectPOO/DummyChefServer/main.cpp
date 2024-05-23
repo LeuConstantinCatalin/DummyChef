@@ -12,6 +12,8 @@ int main() {
     ClientConector::initializareServer();
 
 
+
+
     while (true)
     {
         //auto it = ClientConector::clienti.begin();

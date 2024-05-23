@@ -31,12 +31,3 @@ Utilizator::~Utilizator()
     //delete ui;
 }
 
-void Utilizator::retete_clicked()
-{
-    //ServerConector::send_message("retete");
-
-    //ServerConector::receive_message();
-
-
-    //qDebug()<<"Salut";
-}

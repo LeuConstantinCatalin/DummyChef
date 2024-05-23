@@ -84,12 +84,42 @@ CREATE TABLE stocuri_furnizori (
 ALTER TABLE stocuri_furnizori
 DROP COLUMN cantitate;
 
+ALTER TABLE stocuri_furnizori
+DROP COLUMN calitate;
+
+select * from stocuri_furnizori
+insert into stocuri_furnizori(furnizor_id,ingredient_id,pret,zile_pana_la_livrare,calitate) values
+(1,4,12.99,1,1),
+(1,5,5.99,1,2),
+(1,6,6,2,1),
+(1,7,1,4,3),
+(1,8,20.99,3,1),
+(1,9,5.99,1,1);
+Update stocuri_furnizori
+set calitate = 1
+Where id = 3
+
+ALTER TABLE stocuri_furnizori
+ADD calitate INT;
+
+BEGIN TRY
+    ALTER TABLE stocuri_furnizori
+    ADD COLUMN calitate INT;
+END TRY
+BEGIN CATCH
+    PRINT ERROR_MESSAGE();
+END CATCH
+
+
 CREATE TABLE retete (
     id INT PRIMARY KEY IDENTITY, -- Cheie primară auto-incrementată
     nume VARCHAR(100) UNIQUE, -- Numele retetei, unic
     mod_de_preparare TEXT, -- Modul de preparare al retetei (text lung)
     poza VARBINARY(MAX) -- Imaginea retetei (binar)
 );
+
+ALTER TABLE retete
+ALTER COLUMN poza VARCHAR(200);
 
 CREATE TABLE stocuri_ingrediente (
 	id INT PRIMARY KEY IDENTITY, -- Cheie primară auto-incrementată
@@ -208,3 +238,55 @@ SET zile_pana_la_livrare = (
     INNER JOIN stocuri_furnizori sf ON flc.furnizor_id = sf.furnizor_id AND flc.ingredient_id = sf.ingredient_id
     WHERE flc.lista_de_cumparaturi_id = lista_de_cumparaturi.id
 )
+
+select * from lista_de_cumparaturi
+select * from retete R JOIN ingrediente_reteta IR ON R.id = IR.ID
+SELECT * FROM ingrediente
+
+ALTER procedure Cumparaturi
+@nume varchar(100)
+AS
+BEGIN
+
+SELECT SF.pret, SF.zile_pana_la_livrare, SF.calitate, F.nume FROM stocuri_furnizori SF 
+JOIN ingrediente I ON SF.ingredient_id = I.id
+JOIN furnizori F ON F.id = SF.furnizor_id
+where I.nume = @nume
+
+END
+
+EXEC Cumparaturi cafea
+EXEC Cumparaturi lapte
+
+select * from users
+
+insert into users(username,password, type, activity) values (2,2,'bucatar',4);
+
+CREATE PROCEDURE ActivityUtilizator AS
+BEGIN
+SELECT username, activity from users
+WHERE type = 'utilizator'
+ORDER BY activity
+END
+
+EXEC ActivityUtilizator
+EXEC ActivityBucatar
+
+CREATE PROCEDURE ActivityBucatar AS
+BEGIN
+SELECT username, activity from users
+WHERE type = 'bucatar'
+ORDER BY activity
+END
+
+SELECT username, activity from users
+WHERE type = 'admin'
+ORDER BY activity
+
+EXEC RequestToateRetetele
+
+select * from retete
+
+Update retete
+Set poza = 'D:\\Poze\\Omleta.jpg'
+Where ID = 2

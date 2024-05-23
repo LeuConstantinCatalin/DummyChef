@@ -16,6 +16,13 @@ void Admin::play()
 
 			std::string s = ClientConector::receive_message(socket);
 
+			if (s == "tot");
+			{
+				std::string result;
+				DbConector::RequestToateIngredientele("EXEC RequestToateIngredientele", result);
+				ClientConector::send_message(socket, result.c_str());
+			}
+
 			std::cout << s << std::endl;
 			if (s.substr(0, 11) == "addBucatari")
 			{

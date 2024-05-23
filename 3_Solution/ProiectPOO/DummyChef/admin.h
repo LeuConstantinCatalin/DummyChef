@@ -23,7 +23,7 @@ public:
 
 private slots:
     void AddBucatari_clicked();//{qDebug()<<"Useri Modificati";};
-     void EditUsers_clicked();
+    void EditUsers_clicked();
 private:
     QPushButton* AddBucatari;
     QPushButton* EditUsers;

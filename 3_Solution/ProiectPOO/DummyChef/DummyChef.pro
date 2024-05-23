@@ -13,15 +13,20 @@ SOURCES += \
     admin.cpp \
     bucatar.cpp \
     ceditview.cpp \
+    cumparaturiwindow.cpp \
     cuser.cpp \
+    detaliiretetawindow.cpp \
     editusers.cpp \
     editview.cpp \
     editviewfactory.cpp \
+    ingredient.cpp \
     isign.cpp \
     iuser.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    modificareretetagui.cpp \
+    reteta.cpp \
     serverconector.cpp \
     sig.cpp \
     signfactory.cpp \
@@ -34,14 +39,19 @@ HEADERS += \
     admin.h \
     bucatar.h \
     ceditview.h \
+    cumparaturiwindow.h \
     cuser.h \
+    detaliiretetawindow.h \
     editusers.h \
     editview.h \
     editviewfactory.h \
+    ingredient.h \
     isign.h \
     iuser.h \
     login.h \
     mainwindow.h \
+    modificareretetagui.h \
+    reteta.h \
     serverconector.h \
     sig.h \
     signfactory.h \
@@ -64,3 +74,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=

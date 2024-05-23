@@ -31,7 +31,9 @@ void ServerConector::deleteServerConector()
 
 void ServerConector::connectToServer()
 {
-
+    //127.0.0.1
+    //172.16.39.35
+    //192.168.57.125
     socket.connectToHost("127.0.0.1", 12345); // Adresa IP și portul serverului
 
     if (socket.waitForConnected()) {

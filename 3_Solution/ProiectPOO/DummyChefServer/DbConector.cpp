@@ -17,7 +17,7 @@ void DbConector::initializareConexiuneBd()
     retcode = SQLSetEnvAttr(henv, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, 0);
     retcode = SQLAllocHandle(SQL_HANDLE_DBC, henv, &hdbc);
     // Definirea șirului de conexiune folosind TEXT()
-    TCHAR connString[] = TEXT("DRIVER={SQL Server};SERVER=DESKTOP-K4RIHE6;DATABASE=DummyChef;UID=;PWD=;");
+    TCHAR connString[] = TEXT("DRIVER={SQL Server};SERVER=ASUSVIVOBOOKLEU\\MSSQLSERVER01;DATABASE=DummyChef;UID=;PWD=;");
     retcode = SQLDriverConnect(hdbc, NULL, connString, SQL_NTS, NULL, 0, NULL, SQL_DRIVER_NOPROMPT);
 
     // Verificare eroare la conectare
@@ -253,6 +253,7 @@ void DbConector::cautaViewRequesturi(const SOCKET& socket, int nrAnterior, const
 
 bool DbConector::executaProceduraStocata(const const SOCKET& socket, const std::string& proceduraStocata)
 {
+    //std::cout << "executa procedura";
     SQLHSTMT hstmt;
     SQLRETURN retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);
 
@@ -316,4 +317,257 @@ bool DbConector::cautaExistentaInTabel(const SOCKET& socket, const std::string& 
 
     SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
     return true;
+
+}
+
+bool DbConector::RequestToateIngredientele(const std::string& query, std::string& result) {
+    SQLHSTMT hstmt;
+    SQLRETURN retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);
+
+    // Definește interogarea SQL utilizând un șir wide
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    std::wstring wide_query = converter.from_bytes(query);
+
+    // Execută interogarea SQL
+    retcode = SQLExecDirect(hstmt, reinterpret_cast<SQLWCHAR*>(const_cast<wchar_t*>(wide_query.c_str())), SQL_NTS);
+
+    if (SQL_SUCCEEDED(retcode)) {
+        // Fetch and print the results
+        SQLCHAR columnData1[255], columnData2[255], columnData3[255];
+        SQLLEN indicator1, indicator2, indicator3;
+        while (SQLFetch(hstmt) == SQL_SUCCESS) {
+            SQLGetData(hstmt, 1, SQL_C_CHAR, columnData1, sizeof(columnData1), &indicator1);
+            SQLGetData(hstmt, 2, SQL_C_CHAR, columnData2, sizeof(columnData2), &indicator2);
+            SQLGetData(hstmt, 3, SQL_C_CHAR, columnData3, sizeof(columnData3), &indicator3);
+                std::string str1((const char*)columnData1);
+                std::string str2((const char*)columnData2);
+                std::string str3((const char*)columnData3);
+                result.append(str1 + " ");
+                result.append(str2 + " ");
+                result.append(str3 + "\n");
+        }
+
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return true;
+    }
+    else {
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return false;
+    }
+}
+
+bool DbConector::RequestReteta(const std::string& query, std::string& result) {
+    SQLHSTMT hstmt;
+    SQLRETURN retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);
+
+    // Definește interogarea SQL utilizând un șir wide
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    std::wstring wide_query = converter.from_bytes(query);
+
+    // Execută interogarea SQL
+    retcode = SQLExecDirect(hstmt, reinterpret_cast<SQLWCHAR*>(const_cast<wchar_t*>(wide_query.c_str())), SQL_NTS);
+
+    if (SQL_SUCCEEDED(retcode)) {
+        // Fetch and print the results
+        SQLCHAR columnData1[255], columnData2[255], columnData3[255];
+        SQLLEN indicator1, indicator2, indicator3;
+        while (SQLFetch(hstmt) == SQL_SUCCESS) {
+            SQLGetData(hstmt, 1, SQL_C_CHAR, columnData1, sizeof(columnData1), &indicator1);
+            SQLGetData(hstmt, 2, SQL_C_CHAR, columnData2, sizeof(columnData2), &indicator2);
+            SQLGetData(hstmt, 3, SQL_C_CHAR, columnData3, sizeof(columnData3), &indicator3);
+            std::string str1((const char*)columnData1);
+            std::string str2((const char*)columnData2);
+            std::string str3((const char*)columnData3);
+            result.append(str1 + "\n");
+            result.append(str2 + "\n");
+            result.append(str3 + "\n");
+            //int punct = result.find('.');
+            //result[punct + 1] = 0;
+            //result.append(str3 + "\n");
+        }
+
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return true;
+    }
+    else {
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return false;
+    }
+}
+
+bool DbConector::RequestIngrediente(const std::string& query, std::string& result) {
+    SQLHSTMT hstmt;
+    SQLRETURN retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);
+
+    // Definește interogarea SQL utilizând un șir wide
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    std::wstring wide_query = converter.from_bytes(query);
+
+    // Execută interogarea SQL
+    retcode = SQLExecDirect(hstmt, reinterpret_cast<SQLWCHAR*>(const_cast<wchar_t*>(wide_query.c_str())), SQL_NTS);
+
+    if (SQL_SUCCEEDED(retcode)) {
+        // Fetch and print the results
+        SQLCHAR columnData1[255], columnData2[255], columnData3[255];
+        SQLLEN indicator1, indicator2, indicator3;
+        while (SQLFetch(hstmt) == SQL_SUCCESS) {
+            SQLGetData(hstmt, 1, SQL_C_CHAR, columnData1, sizeof(columnData1), &indicator1);
+            SQLGetData(hstmt, 2, SQL_C_CHAR, columnData2, sizeof(columnData2), &indicator2);
+            SQLGetData(hstmt, 3, SQL_C_CHAR, columnData3, sizeof(columnData3), &indicator3);
+            std::string str1((const char*)columnData1);
+            std::string str2((const char*)columnData2);
+            std::string str3((const char*)columnData3);
+            result.append(str1 + " ");
+            result.append(str2 + " ");
+            result.append(str3 + "\n");
+        }
+
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return true;
+    }
+    else {
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return false;
+    }
+}
+
+bool DbConector::RequestCumparaturi(const std::string& query, std::string& result, int cantitate, double& pret)
+{
+    SQLHSTMT hstmt;
+    SQLRETURN retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);
+
+    // Definește interogarea SQL utilizând un șir wide
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    std::wstring wide_query = converter.from_bytes(query);
+
+    // Execută interogarea SQL
+    retcode = SQLExecDirect(hstmt, reinterpret_cast<SQLWCHAR*>(const_cast<wchar_t*>(wide_query.c_str())), SQL_NTS);
+
+    if (SQL_SUCCEEDED(retcode)) {
+        // Fetch and print the results
+        SQLCHAR columnData1[255], columnData2[255], columnData3[255], columnData4[255];
+        SQLLEN indicator1, indicator2, indicator3, indicator4;
+        while (SQLFetch(hstmt) == SQL_SUCCESS) {
+            SQLGetData(hstmt, 1, SQL_C_CHAR, columnData1, sizeof(columnData1), &indicator1);
+            SQLGetData(hstmt, 2, SQL_C_CHAR, columnData2, sizeof(columnData2), &indicator2);
+            SQLGetData(hstmt, 3, SQL_C_CHAR, columnData3, sizeof(columnData3), &indicator3);
+            SQLGetData(hstmt, 4, SQL_C_CHAR, columnData4, sizeof(columnData4), &indicator4);
+            std::string str1((const char*)columnData1);
+            double temp = std::stod(str1);
+            temp *= 2;
+            pret += temp;
+            str1.clear();
+            str1 = std::to_string(temp);
+            std::string str2((const char*)columnData2);
+            std::string str3((const char*)columnData3);
+            std::string str4((const char*)columnData4);
+            result.append(str1 + " lei, ");
+            result.append(str2 + " zile livrare ");
+            result.append(str3 + " calitate ");
+            result.append(str4 + "\n");
+        }
+
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return true;
+    }
+    else {
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return false;
+    }
+}
+
+bool DbConector::RequestToateRetetele(std::string& result) {
+    SQLHSTMT hstmt;
+    SQLRETURN retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);
+
+    // Definește interogarea SQL pentru apelul procedurii stocate
+
+
+
+    // Execută interogarea SQL pentru apelul procedurii stocate
+    std::string queryMaxIdRetete = "EXEC RequestIdMaxRetete";
+    int MaxIdretete;
+
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> converterMax;
+    std::wstring wide_queryMax = converterMax.from_bytes(queryMaxIdRetete);
+
+    // Execută interogarea SQL
+
+    retcode = SQLExecDirect(hstmt, reinterpret_cast<SQLWCHAR*>(const_cast<wchar_t*>(wide_queryMax.c_str())), SQL_NTS);
+
+    if (SQL_SUCCEEDED(retcode))
+    {
+        SQLCHAR IDColumnData1[255];
+        SQLLEN IDIndicator1;
+        while (SQLFetch(hstmt) == SQL_SUCCESS)
+        {
+            SQLGetData(hstmt, 1, SQL_C_CHAR, IDColumnData1, sizeof(IDColumnData1), &IDIndicator1);
+            if (IDIndicator1 != SQL_NULL_DATA)
+            {
+                std::string str1((const char*)IDColumnData1);
+                MaxIdretete = std::stoi(str1);
+                //std::cout << " " << MaxIdretete << "\n";
+                result.append(str1);
+                result.append("\n_\n");
+            }
+        }
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+    }
+    else {
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return false;
+    }
+
+    for (int i = 1; i <= MaxIdretete; i++)
+    {
+        //EXEC RequestRetetaFromID
+        //EXEC RequestIngredienteRetetaFromID
+        std::string queryReteta = "EXEC RequestRetetaFromID ";
+        std::string Reteta;
+        DbConector::RequestReteta(queryReteta + std::to_string(i), Reteta);
+        //std::cout << Reteta;
+        result.append(Reteta);
+        std::string queryIngrediente = "RequestIngredienteRetetaFromID ";
+        std::string Ingrediente;
+        DbConector::RequestIngrediente(queryIngrediente + std::to_string(i), Ingrediente);
+        //std::cout << Ingrediente;
+        result.append(Ingrediente);
+        result.append("_\n");
+    }
+    std::cout << "\n" << result;
+}
+
+
+bool DbConector::RequestActivity(const std::string& query, std::string& result)
+{
+    SQLHSTMT hstmt;
+    SQLRETURN retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);
+
+    // Definește interogarea SQL utilizând un șir wide
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    std::wstring wide_query = converter.from_bytes(query);
+
+    // Execută interogarea SQL
+    retcode = SQLExecDirect(hstmt, reinterpret_cast<SQLWCHAR*>(const_cast<wchar_t*>(wide_query.c_str())), SQL_NTS);
+
+    if (SQL_SUCCEEDED(retcode)) {
+        // Fetch and print the results
+        SQLCHAR columnData1[255], columnData2[255], columnData3[255];
+        SQLLEN indicator1, indicator2, indicator3;
+        while (SQLFetch(hstmt) == SQL_SUCCESS) {
+            SQLGetData(hstmt, 1, SQL_C_CHAR, columnData1, sizeof(columnData1), &indicator1);
+            SQLGetData(hstmt, 2, SQL_C_CHAR, columnData2, sizeof(columnData2), &indicator2);
+            std::string str1((const char*)columnData1);
+            std::string str2((const char*)columnData2);
+            result.append(str1 + " ");
+            result.append(str2 + "\n");
+        }
+
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return true;
+    }
+    else {
+        SQLFreeHandle(SQL_HANDLE_STMT, hstmt);
+        return false;
+    }
 }

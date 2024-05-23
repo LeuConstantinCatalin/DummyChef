@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include"utilizator.h"
+#include "modificareretetagui.h"
 
 // namespace Ui {
 // class Bucatar;
@@ -19,8 +20,10 @@ public:
     //explicit Bucatar(QWidget *parent = nullptr);
     ~Bucatar();
 protected slots:
-    void retete_clicked() override{};
+    void alterRetete_clicked();
 private:
+    QPushButton* AlterRetete;
+
     //Ui::Bucatar *ui;
 };
 

@@ -14,7 +14,7 @@ Admin::Admin(QString userN,QWidget *parent)
     connect(AddBucatari, &QPushButton::clicked, this, &Admin::AddBucatari_clicked);
 
     EditUsers=new QPushButton("EditUsers",this);
-    EditUsers->setGeometry(250,180,130,30);
+    EditUsers->setGeometry(20,230,130,30);
     connect(EditUsers, &QPushButton::clicked, this, &Admin::EditUsers_clicked);
 }
 

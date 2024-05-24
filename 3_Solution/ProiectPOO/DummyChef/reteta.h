@@ -18,7 +18,7 @@ public:
     QString getModDePreparare() const { return modDePreparare; }
     QString getPozaPath() const { return pozaPath; }
 
-    void setNume(const QString& newName) {
+    void setNume(QString& newName) {
         if (!newName.isNull() && !newName.isEmpty()) {
             nume = newName;
         } else {
@@ -26,14 +26,14 @@ public:
         }
     }
 
-    void setIngrediente(const QList<Ingredient>& newIngrediente) {
+    void setIngrediente(QList<Ingredient>& newIngrediente) {
         ingrediente.clear(); // Șterge lista actuală de ingrediente
         for (const Ingredient& ingredient : newIngrediente) {
             ingrediente.append(ingredient); // Adaugă fiecare ingredient din lista nouă
         }
     }
 
-    void setModDePreparare(const QString& newPreparare) {
+    void setModDePreparare(QString& newPreparare) {
         if (!newPreparare.isNull()) {
             modDePreparare = newPreparare;
         } else {
@@ -41,7 +41,7 @@ public:
         }
     }
 
-    void setPozaPath(const QString& newPath) {
+    void setPozaPath(QString& newPath) {
         if (!newPath.isNull()) {
             pozaPath = newPath;
         } else {

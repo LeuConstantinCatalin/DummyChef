@@ -304,4 +304,4 @@ select * from stocuri_ingrediente
 
 select * from retete
 UPDATE retete
-set poza = 'D:\\Poze\\Tiramisu.jpg'
+set poza = 'C:\\Poze\\Tiramisu.jpg'

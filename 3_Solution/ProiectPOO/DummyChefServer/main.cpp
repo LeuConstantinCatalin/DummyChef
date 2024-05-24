@@ -17,7 +17,7 @@ int main() {
     while (true)
     {
         //auto it = ClientConector::clienti.begin();
-        // 
+        /*
         for(int i =0;i< ClientConector::clienti.size();i++)
             if (ClientConector::clienti[i]->getSocket() == INVALID_SOCKET)
             {
@@ -30,6 +30,7 @@ int main() {
                 ClientConector::clienti.erase(ClientConector::clienti.begin() + i);
                 i--;
             }
+        */
         //while (it != ClientConector::clienti.end()) {
         //    if ((*it)->getSocket() == INVALID_SOCKET) {
         //        delete* it; // Eliberează memoria
